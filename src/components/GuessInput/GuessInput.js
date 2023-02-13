@@ -1,15 +1,17 @@
 import React from 'react';
 
-function Input({ guess, setGuess }) {
+function GuessInput({ guessData, setGuessData }) {
+  const [guess, setGuess] = React.useState('');
+
   function handleSubmit(event) {
     event.preventDefault();
 
-    if (guess.length !== 5) {
-      return;
-    }
+    setGuessData([...guessData, guess]);
+
     console.log({ guess });
     setGuess('');
   }
+
   return (
     <>
       <form
@@ -24,12 +26,12 @@ function Input({ guess, setGuess }) {
           onChange={e => setGuess(e.target.value.toUpperCase())}
           autoFocus
           type='text'
-          minLength={5}
-          maxLength={5}
+          pattern='[a-zA-Z]{5}'
+          title='5 letter word'
         />
       </form>
     </>
   );
 }
 
-export default Input;
+export default GuessInput;
