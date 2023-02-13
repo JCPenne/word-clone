@@ -2,19 +2,22 @@ import React from 'react';
 
 import { range } from '../../utils';
 
-function Guess() {
-  const guessRows = range(0, 6);
+function Guess({ guess }) {
   const guessCells = range(0, 5);
+
+  const guessArray = guess && guess.split('');
+  console.log(guessArray);
   return (
-    <div class='guess-results'>
-      {guessRows.map(row => (
-        <p class='guess'>
-          {guessCells.map(cell => (
-            <span class='cell'></span>
-          ))}
-        </p>
+    <p className='guess'>
+      {guessCells.map((num, index) => (
+        <span
+          className='cell'
+          key={index}
+        >
+          {guessArray.length > 0 ? guessArray[index] : ''}
+        </span>
       ))}
-    </div>
+    </p>
   );
 }
 

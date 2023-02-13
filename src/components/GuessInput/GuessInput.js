@@ -8,7 +8,6 @@ function GuessInput({ guessData, setGuessData }) {
 
     setGuessData([...guessData, guess]);
 
-    console.log({ guess });
     setGuess('');
   }
 
