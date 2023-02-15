@@ -1,21 +1,42 @@
 import React from 'react';
 
-function GuessInput({ guessData, setGuessData }) {
+import Banner from '../Banner/Banner';
+
+function GuessInput({ answer, guessData, setGuessData }) {
   const [guess, setGuess] = React.useState('');
+  const [currentGuess, setCurrentGuess] = React.useState('');
+  const [gameEnd, setGameEnd] = React.useState(false);
 
   function handleSubmit(event) {
     event.preventDefault();
 
     setGuessData([...guessData, guess]);
 
+    setCurrentGuess(guess);
     setGuess('');
+  }
+
+  function handleGameEnd() {
+    if (guess === answer || guessData.length >= 6) {
+      setGameEnd(true);
+    }
   }
 
   return (
     <>
+      {gameEnd ? (
+        <Banner
+          numOfGuesses={guessData.length}
+          answer={answer}
+          guess={currentGuess}
+        />
+      ) : null}
       <form
         className='guess-input-wrapper'
-        onSubmit={event => handleSubmit(event)}
+        onSubmit={event => {
+          handleSubmit(event);
+          handleGameEnd();
+        }}
       >
         <label htmlFor='guess-input'>Take a Guess: </label>
         <input
@@ -27,6 +48,7 @@ function GuessInput({ guessData, setGuessData }) {
           type='text'
           pattern='[a-zA-Z]{5}'
           title='5 letter word'
+          disabled={gameEnd}
         />
       </form>
     </>
