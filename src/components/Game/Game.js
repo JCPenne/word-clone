@@ -14,8 +14,6 @@ console.info({ answer });
 
 function Game() {
   const [guessData, setGuessData] = React.useState([]);
-  const [keyboardState, setKeyboardState] = React.useState(KeyboardData);
-
   return (
     <>
       <GuessResults
@@ -27,7 +25,10 @@ function Game() {
         guessData={guessData}
         setGuessData={setGuessData}
       ></GuessInput>
-      <Keyboard keyboardState={keyboardState}></Keyboard>
+      <Keyboard
+        guessData={guessData}
+        answer={answer}
+      ></Keyboard>
     </>
   );
 }
