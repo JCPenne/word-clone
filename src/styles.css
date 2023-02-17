@@ -96,6 +96,40 @@ h1 {
   margin-bottom: 4px;
 }
 
+.letter {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  border-radius: 10%;
+  background-color: var(--color-gray-900);
+  align-items: center;
+  justify-content: center;
+}
+
+.letter.correct {
+  background: var(--color-success);
+  border-color: var(--color-success);
+  color: white;
+}
+
+.letter.incorrect {
+  background: var(--color-gray-300);
+  border-color: var(--color-gray-300);
+  color: white;
+}
+
+.letter.misplaced {
+  background: var(--color-warning);
+  border-color: var(--color-warning);
+  color: white;
+}
+
+.keyboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .cell {
   position: relative;
   width: 20%;

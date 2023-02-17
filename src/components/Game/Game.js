@@ -5,6 +5,7 @@ import { WORDS } from '../../data';
 
 import GuessInput from '../GuessInput/GuessInput';
 import GuessResults from '../GuessResults/GuessResults';
+import Keyboard from '../Keyboard/Keyboard';
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -22,6 +23,7 @@ function Game() {
         guessData={guessData}
         setGuessData={setGuessData}
       ></GuessInput>
+      <Keyboard></Keyboard>
     </>
   );
 }
