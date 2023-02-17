@@ -1,36 +1,25 @@
 import React from 'react';
 
 import { range } from '../../utils';
-import { KeyboardArray } from '../../constants';
-function Letter({ children }) {
+
+function Letter({ children, status }) {
   return (
-    <span className='letter'>
+    <span className={status ? `letter ${status}` : 'letter'}>
       <strong>{children}</strong>
     </span>
   );
 }
 
-function Keyboard() {
+function Keyboard({ keyboardState }) {
   return (
     <div className='keyboard'>
       <p className='guess'>
         {range(10).map(index => (
-          <Letter key={index}>
-            {Object.values(KeyboardArray[0])[0][index].letter}
-          </Letter>
-        ))}
-      </p>
-      <p className='guess'>
-        {range(9).map(index => (
-          <Letter key={index}>
-            {Object.values(KeyboardArray[1])[0][index].letter}
-          </Letter>
-        ))}
-      </p>
-      <p className='guess'>
-        {range(7).map(index => (
-          <Letter key={index}>
-            {Object.values(KeyboardArray[2])[0][index].letter}
+          <Letter
+            key={index}
+            status={keyboardState[index].status}
+          >
+            {keyboardState[index].letter}
           </Letter>
         ))}
       </p>
