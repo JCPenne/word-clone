@@ -39,10 +39,18 @@ function Keyboard({ guessData, answer }) {
 
   return (
     <div className='keyboard'>
-      {validatedKeyboard.map(row => (
-        <p className='guess'>
-          {Object.keys(row).map(cell => (
-            <Letter status={row[cell].status}>{cell}</Letter>
+      {validatedKeyboard.map((row, index) => (
+        <p
+          className='guess'
+          key={index}
+        >
+          {Object.keys(row).map((cell, index) => (
+            <Letter
+              key={index}
+              status={row[cell].status}
+            >
+              {cell}
+            </Letter>
           ))}
         </p>
       ))}
